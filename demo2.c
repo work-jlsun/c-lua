@@ -1,39 +1,39 @@
 /**
  * make: gcc -o a.out demo.c  -I/usr/include/lua5.1  -llua5.1
- * brief: lua ½Å±¾ÖĞµ÷ÓÃ ËŞÖ÷»ú(cÓïÑÔ)ÖĞ ´úÂë 
+ * brief: lua è„šæœ¬ä¸­è°ƒç”¨ å®¿ä¸»æœº(cè¯­è¨€)ä¸­ ä»£ç  
  */
  
-#include <lua.h>       //LuaÓïÑÔ½âÎöÆ÷
-#include <lualib.h>    //Lua±ê×¼¿â
-#include <lauxlib.h>   //Lua¸¨Öú¹¤¾ß
+#include <lua.h>       //Luaè¯­è¨€è§£æå™¨
+#include <lualib.h>    //Luaæ ‡å‡†åº“
+#include <lauxlib.h>   //Luaè¾…åŠ©å·¥å…·
 
 /**
- * Luaµ÷ÓÃµÄËŞÖ÷º¯Êı¾ßÓĞÍ³Ò»µÄÔ­ĞÍ:int f(lua_State *s)
- * Êı¾İ´«µİ²»Í¨¹ıÆä²ÎÊı£¬¶øÊÇÍ¨¹ı¶ÑÕ»£»ÕûĞÍ·µ»ØÖµÖ¸Ã÷
- * ÁË¸Ãº¯ÊıÕæÕıÏòlua·µ»ØµÄÖµµÄ¸öÊı£¬¼´Ñ¹Õ»µÄ½á¹û¸öÊı¡£
- * º¯Êı·µ»Øºó£¬LuaĞéÄâ»ú»á×Ô¶¯ÇåÀíÕ»¹¤×÷£¬²»ĞíÔÚº¯ÊıÄÚ
- * ²¿À´×ö¡£
+ * Luaè°ƒç”¨çš„å®¿ä¸»å‡½æ•°å…·æœ‰ç»Ÿä¸€çš„åŸå‹:int f(lua_State *s)
+ * æ•°æ®ä¼ é€’ä¸é€šè¿‡å…¶å‚æ•°ï¼Œè€Œæ˜¯é€šè¿‡å †æ ˆï¼›æ•´å‹è¿”å›å€¼æŒ‡æ˜
+ * äº†è¯¥å‡½æ•°çœŸæ­£å‘luaè¿”å›çš„å€¼çš„ä¸ªæ•°ï¼Œå³å‹æ ˆçš„ç»“æœä¸ªæ•°ã€‚
+ * å‡½æ•°è¿”å›åï¼ŒLuaè™šæ‹Ÿæœºä¼šè‡ªåŠ¨æ¸…ç†æ ˆå·¥ä½œï¼Œä¸è®¸åœ¨å‡½æ•°å†…
+ * éƒ¨æ¥åšã€‚
  */ 
 
 
 
- //¹©LuaÊ¹ÓÃµÄº¯ÊıÍ¨ÓÃÔ­ĞÍ
+ //ä¾›Luaä½¿ç”¨çš„å‡½æ•°é€šç”¨åŸå‹
 int divide(lua_State *s) {
-    double a = lua_tonumber(s, -2); //È¡µÃµÚÒ»¸ö²ÎÊı   
-    double b = lua_tonumber(s, -1); //È¡µÃµÚ¶ş¸ö²ÎÊı
+    double a = lua_tonumber(s, -2); //å–å¾—ç¬¬ä¸€ä¸ªå‚æ•°   
+    double b = lua_tonumber(s, -1); //å–å¾—ç¬¬äºŒä¸ªå‚æ•°
     int quot = (int)a /(int)b;      
     int rem = (int)a %(int) b;      
-    lua_pushnumber(s, quot);        //½«µÚÒ»¸ö·µ»ØÖµÈë¶ÑÕ»
-    lua_pushnumber(s, rem);         //½«µÚ¶ş¸ö·µ»ØÖµÈë¶ÑÕ»
-    return 2;                       //·µ»ØÖµÎª½á¹ûµÄ¸öÊı
+    lua_pushnumber(s, quot);        //å°†ç¬¬ä¸€ä¸ªè¿”å›å€¼å…¥å †æ ˆ
+    lua_pushnumber(s, rem);         //å°†ç¬¬äºŒä¸ªè¿”å›å€¼å…¥å †æ ˆ
+    return 2;                       //è¿”å›å€¼ä¸ºç»“æœçš„ä¸ªæ•°
 }
 
 int main(int argc, char *argv[]) {
-    lua_State *s = luaL_newstate();  //ĞÂ½¨luaĞéÄâ»ú
-    luaL_openlibs(s);               //´ò¿ªlua¸½¼Ó¿â
+    lua_State *s = luaL_newstate();  //æ–°å»ºluaè™šæ‹Ÿæœº
+    luaL_openlibs(s);               //æ‰“å¼€luaé™„åŠ åº“
     lua_register(s,"div", divide);
     luaL_dofile(s,"demo2.lua");
-    lua_close(s);                   //¹Ø±ÕĞéÄâ»ú
+    lua_close(s);                   //å…³é—­è™šæ‹Ÿæœº
     return 0;
 
 }

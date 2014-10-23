@@ -3,9 +3,9 @@
  * brief:  
  */
  
-#include <lua.h>       //LuaÓïÑÔ½âÎöÆ÷
-#include <lualib.h>    //Lua±ê×¼¿â
-#include <lauxlib.h>   //Lua¸¨Öú¹¤¾ß
+#include <lua.h>       //Luaè¯­è¨€è§£æå™¨
+#include <lualib.h>    //Luaæ ‡å‡†åº“
+#include <lauxlib.h>   //Luaè¾…åŠ©å·¥å…·
 
 
 int main() {
@@ -17,7 +17,7 @@ int main() {
     lua_pushstring(s, "It is from C");
     lua_call(s, 1,1);
 
-    const char *result = lua_tostring(s, -1); //È¡µ½Õ»¶¥µÄ·µ»ØÖµ
+    const char *result = lua_tostring(s, -1); //å–åˆ°æ ˆé¡¶çš„è¿”å›å€¼
     printf("C has got:%s\n",result);
     lua_pop(s, 1);
 
@@ -26,9 +26,9 @@ int main() {
 }
 
 /**
- * ¿É¼û, ËŞÖ÷ÓïÑÔ¿ÉÒÔÍ¨¹ıÃû³Æ·½±ãµÃÈ¡µÃLuaµÄÈ«¾Ö±äÁ¿(lua_getglobal),
- * ¶øLuaÖĞÏÔÈ»°Ñº¯ÊıÒ²µ±³ÉÁËÒ»ÖÖÊı¾İ¡£ÕâÒ»ÌØĞÔ£¬¿ÉÒÔÊ¹LuaÔ´´úÂë³ÉÎª
- * ¹¦ÄÜ×îÇ¿µÄÅäÖÃÎÄ¼ş£¬ÕâÒ²ÊÇÏîÄ¿ÖĞ×îÈİÒ×ÒıÈëLuaµÄ·½Ê½
+ * å¯è§, å®¿ä¸»è¯­è¨€å¯ä»¥é€šè¿‡åç§°æ–¹ä¾¿å¾—å–å¾—Luaçš„å…¨å±€å˜é‡(lua_getglobal),
+ * è€ŒLuaä¸­æ˜¾ç„¶æŠŠå‡½æ•°ä¹Ÿå½“æˆäº†ä¸€ç§æ•°æ®ã€‚è¿™ä¸€ç‰¹æ€§ï¼Œå¯ä»¥ä½¿Luaæºä»£ç æˆä¸º
+ * åŠŸèƒ½æœ€å¼ºçš„é…ç½®æ–‡ä»¶ï¼Œè¿™ä¹Ÿæ˜¯é¡¹ç›®ä¸­æœ€å®¹æ˜“å¼•å…¥Luaçš„æ–¹å¼
  */
 
 
